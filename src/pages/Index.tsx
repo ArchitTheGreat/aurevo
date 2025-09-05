@@ -39,7 +39,7 @@ const Index = () => {
           </h1>
           
           <p className="text-xl md:text-2xl mb-12 text-muted-foreground max-w-2xl mx-auto">
-            Deploy your site, pay with <span className="text-neon-blue font-semibold">ETH/USDC/DOGE</span>. Simple.
+            Deploy your site, pay with <span className="text-neon-blue font-semibold">ETH/USDC</span>. Simple.
           </p>
           
           <Button
@@ -84,27 +84,18 @@ const Index = () => {
           <h2 className="text-4xl md:text-6xl font-bold mb-8 text-neon-green">Step 1: Send Payment</h2>
           <p className="text-xl mb-16 text-muted-foreground">Send crypto to the address below. Save your transaction hash.</p>
 
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            <Card className="gradient-card border-neon-blue/50 p-8">
-              <h3 className="text-2xl font-bold mb-4 text-neon-blue">ETH / USDC</h3>
-              <div className="mb-6">
-                <div className="w-48 h-48 mx-auto rounded-lg mb-4 bg-secondary flex items-center justify-center text-sm">QR Code</div>
-                <div className="bg-secondary p-3 rounded-lg font-mono text-sm">0x1234...abcd</div>
+          <div className="max-w-md mx-auto">
+            <Card className="gradient-card border-neon-blue/50 p-8 hover:shadow-neon transition-all duration-300">
+              <div className="text-center">
+                <h3 className="text-2xl font-bold mb-4 text-neon-blue">ETH / USDC</h3>
+                <div className="mb-6">
+                  <div className="w-48 h-48 mx-auto rounded-lg mb-4 bg-secondary flex items-center justify-center text-sm">QR Code</div>
+                  <div className="bg-secondary p-3 rounded-lg font-mono text-sm break-all">0x6aC5e3016382208E57A8224F4288414d0b30a276</div>
+                </div>
+                <Button variant="neonOutline" onClick={() => copyToClipboard("0x6aC5e3016382208E57A8224F4288414d0b30a276", "eth")} className="w-full">
+                  {copiedAddress === "eth" ? "Copied!" : "Copy Address"}
+                </Button>
               </div>
-              <Button variant="outline" onClick={() => copyToClipboard("0x1234567890abcdef", "eth")} className="w-full border-neon-blue text-neon-blue">
-                {copiedAddress === "eth" ? "Copied!" : "Copy Address"}
-              </Button>
-            </Card>
-
-            <Card className="gradient-card border-neon-green/50 p-8">
-              <h3 className="text-2xl font-bold mb-4 text-neon-green">DOGE</h3>
-              <div className="mb-6">
-                <div className="w-48 h-48 mx-auto rounded-lg mb-4 bg-secondary flex items-center justify-center text-sm">QR Code</div>
-                <div className="bg-secondary p-3 rounded-lg font-mono text-sm">DMK3...xyz9</div>
-              </div>
-              <Button variant="outline" onClick={() => copyToClipboard("DMK3L4N8EXAMPLE", "doge")} className="w-full border-neon-green text-neon-green">
-                {copiedAddress === "doge" ? "Copied!" : "Copy Address"}
-              </Button>
             </Card>
           </div>
         </div>
@@ -160,7 +151,7 @@ const Index = () => {
       <footer className="py-8 px-6 bg-card border-t border-neon/20">
         <div className="max-w-6xl mx-auto text-center">
           <p className="text-muted-foreground">
-            Powered by Netlify infrastructure. Managed by <span className="text-neon-blue font-semibold">CryptoHost</span>.
+            Powered by Netlify infrastructure. Managed by <span className="text-neon-blue font-semibold">Cryptyc</span>.
           </p>
         </div>
       </footer>
