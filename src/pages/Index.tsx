@@ -142,6 +142,13 @@ const Index = () => {
                   </div>
                 </form>
               </Card>
+              <form name="site-upload" netlify netlify-honeypot="bot-field" hidden>
+  <input type="file" name="files" />
+  <input type="text" name="domain" />
+  <input type="text" name="txhash" />
+  <input type="text" name="contact" />
+</form>
+
             </>
           )}
         </div>
