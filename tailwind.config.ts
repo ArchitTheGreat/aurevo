@@ -116,7 +116,8 @@ export default {
 				'fade-in-up': 'fade-in-up 0.6s ease-out'
 			},
 			fontFamily: {
-				sans: ['Inter', 'system-ui', 'sans-serif']
+				sans: ['Inter', 'system-ui', 'sans-serif'],
+				mono: ['JetBrains Mono', 'Consolas', 'Monaco', 'monospace']
 			}
 		}
 	},

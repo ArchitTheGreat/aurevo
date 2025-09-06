@@ -64,11 +64,11 @@ const Index = () => {
             </div>
             
             <div className="space-y-4 mb-8 text-left">
-              <div className="flex items-center gap-3"><span className="text-2xl">🚀</span><span>Unlimited bandwidth</span></div>
-              <div className="flex items-center gap-3"><span className="text-2xl">🔒</span><span>Free SSL included</span></div>
-              <div className="flex items-center gap-3"><span className="text-2xl">🛠</span><span>Managed deployment</span></div>
-              <div className="flex items-center gap-3"><span className="text-2xl">⏱</span><span>24/7 uptime monitoring</span></div>
-              <div className="flex items-center gap-3"><span className="text-2xl">✅</span><span>Worry-free setup</span></div>
+              <div className="flex items-center gap-3"><span className="w-5 h-5 bg-neon-blue rounded"></span><span>Unlimited bandwidth</span></div>
+              <div className="flex items-center gap-3"><span className="w-5 h-5 bg-neon-blue rounded"></span><span>Free SSL included</span></div>
+              <div className="flex items-center gap-3"><span className="w-5 h-5 bg-neon-blue rounded"></span><span>Managed deployment</span></div>
+              <div className="flex items-center gap-3"><span className="w-5 h-5 bg-neon-blue rounded"></span><span>24/7 uptime monitoring</span></div>
+              <div className="flex items-center gap-3"><span className="w-5 h-5 bg-neon-blue rounded"></span><span>Worry-free setup</span></div>
             </div>
             
             <Button onClick={scrollToPayment} className="w-full bg-gradient-to-r from-neon-blue to-neon-green text-background font-bold">
@@ -89,7 +89,13 @@ const Index = () => {
               <div className="text-center">
                 <h3 className="text-2xl font-bold mb-4 text-neon-blue">ETH / USDC</h3>
                 <div className="mb-6">
-                  <div className="w-48 h-48 mx-auto rounded-lg mb-4 bg-secondary flex items-center justify-center text-sm">QR Code</div>
+                  <div className="w-48 h-48 mx-auto rounded-lg mb-4 overflow-hidden">
+                    <img 
+                      src="/src/assets/qr-eth.png" 
+                      alt="ETH/USDC Payment QR Code" 
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
                   <div className="bg-secondary p-3 rounded-lg font-mono text-sm break-all">0x6aC5e3016382208E57A8224F4288414d0b30a276</div>
                 </div>
                 <Button variant="neonOutline" onClick={() => copyToClipboard("0x6aC5e3016382208E57A8224F4288414d0b30a276", "eth")} className="w-full">
@@ -135,6 +141,10 @@ const Index = () => {
                     <div>
                       <Label htmlFor="contact">Your contact (email or Telegram) *</Label>
                       <Input id="contact" name="contact" placeholder="your@email.com or @telegram" required className="mt-2" />
+                    </div>
+                    <div>
+                      <Label htmlFor="extra-info">Extra info (optional)</Label>
+                      <Input id="extra-info" name="extra-info" placeholder="Any additional details or requirements" className="mt-2" />
                     </div>
                     <Button type="submit" className="w-full bg-gradient-to-r from-neon-blue to-neon-green text-background font-bold">
                       Submit Files
