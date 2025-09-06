@@ -25,23 +25,23 @@ export const Pricing = () => {
               
               <div className="space-y-4 mb-8 text-left">
                 <div className="flex items-center gap-3">
-                  <span className="text-2xl">🚀</span>
+                  <span className="w-2 h-2 bg-neon-blue rounded-full"></span>
                   <span>Unlimited bandwidth</span>
                 </div>
                 <div className="flex items-center gap-3">
-                  <span className="text-2xl">🔒</span>
+                  <span className="w-2 h-2 bg-neon-blue rounded-full"></span>
                   <span>Free SSL included</span>
                 </div>
                 <div className="flex items-center gap-3">
-                  <span className="text-2xl">🛠</span>
+                  <span className="w-2 h-2 bg-neon-blue rounded-full"></span>
                   <span>Managed deployment</span>
                 </div>
                 <div className="flex items-center gap-3">
-                  <span className="text-2xl">⏱</span>
+                  <span className="w-2 h-2 bg-neon-blue rounded-full"></span>
                   <span>24/7 uptime monitoring</span>
                 </div>
                 <div className="flex items-center gap-3">
-                  <span className="text-2xl">✅</span>
+                  <span className="w-2 h-2 bg-neon-blue rounded-full"></span>
                   <span>Worry-free setup</span>
                 </div>
               </div>
