@@ -119,6 +119,7 @@ const Index = () => {
               <Card className="gradient-card p-8">
                 <form name="site-upload" method="POST" data-netlify="true" onSubmit={handleSubmit} netlify>
                   <input type="hidden" name="form-name" value="site-upload" />
+                  <input type="hidden" name="bot-field" />
                   <div className="space-y-6">
                     <div>
                       <Label htmlFor="files">Upload your site files (ZIP, max 100MB)</Label>
@@ -142,13 +143,14 @@ const Index = () => {
                   </div>
                 </form>
               </Card>
-              <form name="site-upload" netlify netlify-honeypot="bot-field" hidden>
-  <input type="file" name="files" />
-  <input type="text" name="domain" />
-  <input type="text" name="txhash" />
-  <input type="text" name="contact" />
-</form>
 
+              {/* Hidden static form so Netlify detects it */}
+              <form name="site-upload" netlify netlify-honeypot="bot-field" hidden>
+                <input type="file" name="files" />
+                <input type="text" name="domain" />
+                <input type="text" name="txhash" />
+                <input type="text" name="contact" />
+              </form>
             </>
           )}
         </div>
