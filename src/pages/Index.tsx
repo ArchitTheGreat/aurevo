@@ -117,7 +117,7 @@ const Index = () => {
               </div>
 
               <Card className="gradient-card p-8">
-                <form name="site-upload" method="POST" data-netlify="true" onSubmit={handleSubmit}>
+                <form name="site-upload" method="POST" data-netlify="true" onSubmit={handleSubmit} netlify>
                   <input type="hidden" name="form-name" value="site-upload" />
                   <div className="space-y-6">
                     <div>
