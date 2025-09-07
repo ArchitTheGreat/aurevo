@@ -5,10 +5,9 @@ import { Card } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { useState } from "react"
-import { useForm, ValidationError } from "@formspree/react"
-
 const Index = () => {
   const [copiedAddress, setCopiedAddress] = useState<string | null>(null)
+  const [submitted, setSubmitted] = useState(false)
 
   const scrollToPricing = () => {
     document.getElementById("pricing")?.scrollIntoView({ behavior: "smooth" })
@@ -24,8 +23,13 @@ const Index = () => {
     setTimeout(() => setCopiedAddress(null), 2000)
   }
 
-  // Formspree hook
-  const [state, handleSubmit] = useForm("myzdlzwp")
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    setSubmitted(true)
+    // Let the form submit naturally to GetForm
+    const form = e.target as HTMLFormElement
+    form.submit()
+  }
 
   return (
     <div className="min-h-screen bg-background scroll-smooth">
@@ -144,7 +148,7 @@ const Index = () => {
       {/* Upload Section */}
       <section className="py-20 px-6 bg-background">
         <div className="max-w-2xl mx-auto">
-          {state.succeeded ? (
+          {submitted ? (
             <div className="text-center">
               <h2 className="text-4xl md:text-6xl font-bold mb-8 text-neon-green">
                 Thank You!
@@ -167,28 +171,41 @@ const Index = () => {
 
               <Card className="gradient-card p-8">
                 <form
-                  onSubmit={handleSubmit}
+                  action="https://getform.io/f/ayveqvlb"
+                  method="POST"
                   encType="multipart/form-data"
+                  onSubmit={handleSubmit}
                   className="space-y-6"
                 >
+                  <input type="hidden" name="_gotcha" style={{display: 'none'}} />
+                  
                   <div>
                     <Label htmlFor="files">
-                      Upload your site files (ZIP, max 100MB)
+                      Upload your site files (ZIP, 7ZIP, RAR - max 5MB)
                     </Label>
                     <Input
                       id="files"
-                      name="files"
+                      name="file"
                       type="file"
-                      accept=".zip"
+                      accept=".zip,.7z,.rar,.tar,.gz"
                       required
                       className="mt-2"
                     />
-                    <ValidationError
-                      prefix="Files"
-                      field="files"
-                      errors={state.errors}
+                  </div>
+
+                  <div>
+                    <Label htmlFor="cloud-link">
+                      Or provide cloud storage link (Google Drive, Dropbox, etc.)
+                    </Label>
+                    <Input
+                      id="cloud-link"
+                      name="cloud-link"
+                      type="url"
+                      placeholder="https://drive.google.com/... or https://dropbox.com/..."
+                      className="mt-2"
                     />
                   </div>
+
                   <div>
                     <Label htmlFor="domain">
                       Your domain (or leave blank for free subdomain)
@@ -199,12 +216,8 @@ const Index = () => {
                       placeholder="example.com"
                       className="mt-2"
                     />
-                    <ValidationError
-                      prefix="Domain"
-                      field="domain"
-                      errors={state.errors}
-                    />
                   </div>
+
                   <div>
                     <Label htmlFor="txhash">Transaction hash (from Step 1) *</Label>
                     <Input
@@ -214,12 +227,8 @@ const Index = () => {
                       required
                       className="mt-2"
                     />
-                    <ValidationError
-                      prefix="TxHash"
-                      field="txhash"
-                      errors={state.errors}
-                    />
                   </div>
+
                   <div>
                     <Label htmlFor="contact">
                       Your contact (email or Telegram) *
@@ -231,18 +240,25 @@ const Index = () => {
                       required
                       className="mt-2"
                     />
-                    <ValidationError
-                      prefix="Contact"
-                      field="contact"
-                      errors={state.errors}
+                  </div>
+
+                  <div>
+                    <Label htmlFor="extra-info">
+                      Extra info (optional)
+                    </Label>
+                    <Input
+                      id="extra-info"
+                      name="extra-info"
+                      placeholder="Any additional information or requirements"
+                      className="mt-2"
                     />
                   </div>
+
                   <Button
                     type="submit"
-                    disabled={state.submitting}
                     className="w-full bg-gradient-to-r from-neon-blue to-neon-green text-background font-bold"
                   >
-                    {state.submitting ? "Submitting..." : "Submit Files"}
+                    Submit Files
                   </Button>
                 </form>
               </Card>
