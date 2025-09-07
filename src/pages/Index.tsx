@@ -117,30 +117,63 @@ const Index = () => {
               </div>
 
               <Card className="gradient-card p-8">
-                <form action="https://formspree.io/f/myzdlzwp" method="POST" onSubmit={handleSubmit}>
-                  <div className="space-y-6">
-                    <div>
-                      <Label htmlFor="files">Upload your site files (ZIP, max 100MB)</Label>
-                      <Input id="files" name="files" type="file" accept=".zip" required className="mt-2" />
-                    </div>
-                    <div>
-                      <Label htmlFor="domain">Your domain (or leave blank for free subdomain)</Label>
-                      <Input id="domain" name="domain" placeholder="example.com" className="mt-2" />
-                    </div>
-                    <div>
-                      <Label htmlFor="txhash">Transaction hash (from Step 1) *</Label>
-                      <Input id="txhash" name="txhash" placeholder="0x..." required className="mt-2" />
-                    </div>
-                    <div>
-                      <Label htmlFor="contact">Your contact (email or Telegram) *</Label>
-                      <Input id="contact" name="contact" placeholder="your@email.com or @telegram" required className="mt-2" />
-                    </div>
-                    <Button type="submit" className="w-full bg-gradient-to-r from-neon-blue to-neon-green text-background font-bold">
-                      Submit Files
-                    </Button>
-                  </div>
-                </form>
-              </Card>
+  <form
+    action="https://formspree.io/f/myzdlzwp"
+    method="POST"
+    encType="multipart/form-data"
+    onSubmit={handleSubmit}
+  >
+    <div className="space-y-6">
+      <div>
+        <Label htmlFor="files">Upload your site files (ZIP, max 100MB)</Label>
+        <Input
+          id="files"
+          name="files"
+          type="file"
+          accept=".zip"
+          required
+          className="mt-2"
+        />
+      </div>
+      <div>
+        <Label htmlFor="domain">Your domain (or leave blank for free subdomain)</Label>
+        <Input
+          id="domain"
+          name="domain"
+          placeholder="example.com"
+          className="mt-2"
+        />
+      </div>
+      <div>
+        <Label htmlFor="txhash">Transaction hash (from Step 1) *</Label>
+        <Input
+          id="txhash"
+          name="txhash"
+          placeholder="0x..."
+          required
+          className="mt-2"
+        />
+      </div>
+      <div>
+        <Label htmlFor="contact">Your contact (email or Telegram) *</Label>
+        <Input
+          id="contact"
+          name="contact"
+          placeholder="your@email.com or @telegram"
+          required
+          className="mt-2"
+        />
+      </div>
+      <Button
+        type="submit"
+        className="w-full bg-gradient-to-r from-neon-blue to-neon-green text-background font-bold"
+      >
+        Submit Files
+      </Button>
+    </div>
+  </form>
+</Card>
+
             </>
           )}
         </div>
