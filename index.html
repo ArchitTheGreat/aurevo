@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
+<html lang="en" class="scroll-smooth">
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cryptyc - Crypto-Only Hosting. No Banks. No Drama.</title>
@@ -19,10 +19,232 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@cryptyc" />
     <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
-  </head>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: ['class'],
+            theme: {
+                extend: {
+                    colors: {
+                        background: 'hsl(var(--background))',
+                        foreground: 'hsl(var(--foreground))',
+                        card: 'hsl(var(--card))',
+                        'card-foreground': 'hsl(var(--card-foreground))',
+                        primary: 'hsl(var(--primary))',
+                        'primary-foreground': 'hsl(var(--primary-foreground))',
+                        secondary: 'hsl(var(--secondary))',
+                        'secondary-foreground': 'hsl(var(--secondary-foreground))',
+                        muted: 'hsl(var(--muted))',
+                        'muted-foreground': 'hsl(var(--muted-foreground))',
+                        accent: 'hsl(var(--accent))',
+                        'accent-foreground': 'hsl(var(--accent-foreground))',
+                        border: 'hsl(var(--border))',
+                        input: 'hsl(var(--input))',
+                        ring: 'hsl(var(--ring))',
+                        'neon-blue': 'hsl(var(--neon-blue))',
+                        'neon-green': 'hsl(var(--neon-green))',
+                        'neon-pink': 'hsl(var(--neon-pink))'
+                    },
+                    borderRadius: {
+                        lg: 'var(--radius)',
+                        md: 'calc(var(--radius) - 2px)',
+                        sm: 'calc(var(--radius) - 4px)'
+                    },
+                    keyframes: {
+                        'glow-pulse': {
+                            '0%, 100%': { boxShadow: '0 0 20px hsl(var(--neon-blue) / 0.3)' },
+                            '50%': { boxShadow: '0 0 40px hsl(var(--neon-blue) / 0.6)' }
+                        },
+                        'fade-in-up': {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        }
+                    },
+                    animation: {
+                        'glow-pulse': 'glow-pulse 2s ease-in-out infinite',
+                        'fade-in-up': 'fade-in-up 0.6s ease-out',
+                        'bounce': 'bounce 1s infinite'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="styles.css">
+</head>
 
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+<body>
+    <div class="min-h-screen bg-background scroll-smooth">
+        <!-- Hero Section -->
+        <section class="min-h-screen flex items-center justify-center gradient-hero px-6">
+            <div class="text-center max-w-4xl mx-auto animate-fade-in-up">
+                <h1 class="text-6xl md:text-8xl font-black mb-6 leading-tight">
+                    <span class="block">Crypto-Only Hosting.</span>
+                    <span class="block text-neon-blue">No Banks.</span>
+                    <span class="block text-neon-green">No Drama.</span>
+                </h1>
+
+                <p class="text-xl md:text-2xl mb-12 text-muted-foreground max-w-2xl mx-auto">
+                    Deploy your site, pay with <span class="text-neon-blue font-semibold">ETH/USDC</span>. Simple.
+                </p>
+
+                <button onclick="scrollToPricing()" class="animate-glow-pulse bg-gradient-to-r from-neon-blue to-neon-green text-background font-bold text-lg px-12 py-4 h-14 rounded-xl shadow-neon hover:shadow-lg hover:scale-105 transition-all duration-300">
+                    Get Started Now
+                </button>
+            </div>
+        </section>
+
+        <!-- Pricing Section -->
+        <section id="pricing" class="py-20 px-6 bg-background">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="text-4xl md:text-6xl font-bold mb-16 text-neon-blue">Simple Pricing</h2>
+
+                <div class="max-w-md mx-auto gradient-card border-neon shadow-card p-8 rounded-lg border">
+                    <h3 class="text-2xl font-bold mb-4">Hosting Plan</h3>
+                    <div class="mb-8">
+                        <span class="text-4xl font-black text-neon-blue">0.0093 ETH</span>
+                        <span class="text-muted-foreground ml-2">/ month</span>
+                    </div>
+
+                    <div class="space-y-4 mb-8 text-left">
+                        <div class="flex items-center gap-3">
+                            <span class="w-2 h-2 bg-neon-blue rounded-full"></span>
+                            <span>Unlimited bandwidth</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <span class="w-2 h-2 bg-neon-blue rounded-full"></span>
+                            <span>Free SSL included</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <span class="w-2 h-2 bg-neon-blue rounded-full"></span>
+                            <span>Managed deployment</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <span class="w-2 h-2 bg-neon-blue rounded-full"></span>
+                            <span>24/7 uptime monitoring</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <span class="w-2 h-2 bg-neon-blue rounded-full"></span>
+                            <span>Worry-free setup</span>
+                        </div>
+                    </div>
+
+                    <button onclick="scrollToPayment()" class="w-full bg-gradient-to-r from-neon-blue to-neon-green text-background font-bold py-3 px-6 rounded-md">
+                        Pay & Upload Your Site →
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Payment Section -->
+        <section id="payment" class="py-20 px-6 bg-card">
+            <div class="max-w-6xl mx-auto text-center">
+                <h2 class="text-4xl md:text-6xl font-bold mb-8 text-neon-green">Step 1: Send Payment</h2>
+                <p class="text-xl mb-16 text-muted-foreground">Send crypto to the address below. Save your transaction hash.</p>
+
+                <div class="max-w-md mx-auto">
+                    <div class="gradient-card border-neon-blue/50 p-8 hover:shadow-neon transition-all duration-300 rounded-lg border">
+                        <div class="text-center">
+                            <h3 class="text-2xl font-bold mb-4 text-neon-blue">ETH / USDC</h3>
+                            <div class="mb-6">
+                                <img src="/lovable-uploads/03d767f5-a9bf-4d53-b0b3-a863721e8ea7.png" alt="ETH/USDC Payment QR Code" class="w-48 h-48 mx-auto rounded-lg mb-4 object-contain" />
+                                <div class="bg-secondary p-3 rounded-lg font-mono text-sm break-all">
+                                    0x6aC5e3016382208E57A8224F4288414d0b30a276
+                                </div>
+                            </div>
+                            <button onclick="copyToClipboard('0x6aC5e3016382208E57A8224F4288414d0b30a276', 'eth')" class="w-full border-2 border-neon-blue text-neon-blue hover:bg-neon-blue hover:text-background transition-colors py-2 px-4 rounded-md">
+                                <span id="copy-btn-eth">Copy Address</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Upload Section -->
+        <section class="py-20 px-6 bg-background">
+            <div class="max-w-2xl mx-auto">
+                <div id="thank-you" class="text-center hidden">
+                    <h2 class="text-4xl md:text-6xl font-bold mb-8 text-neon-green">Thank You!</h2>
+                    <p class="text-xl text-muted-foreground">
+                        We'll verify your payment and deploy your site. Expect your live link within 24 hours.
+                    </p>
+                </div>
+
+                <div id="upload-form">
+                    <div class="text-center mb-16">
+                        <h2 class="text-4xl md:text-6xl font-bold mb-8 text-neon-blue">Step 2: Upload Your Files</h2>
+                        <p class="text-xl text-muted-foreground">Upload your site files and details so we can deploy it.</p>
+                    </div>
+
+                    <div class="gradient-card p-8 rounded-lg border">
+                        <form action="https://getform.io/f/ayveqvlb" method="POST" enctype="multipart/form-data" onsubmit="handleSubmit(event)" class="space-y-6">
+                            <input type="hidden" name="_gotcha" style="display:none">
+
+                            <div>
+                                <label for="files" class="block text-sm font-medium mb-2">
+                                    Upload your site files (ZIP, 7ZIP, RAR - max 5MB)
+                                </label>
+                                <input id="files" name="file" type="file" accept=".zip,.7z,.rar,.tar,.gz" required class="w-full px-3 py-2 border border-input bg-background rounded-md focus:outline-none focus:ring-2 focus:ring-ring">
+                            </div>
+
+                            <div>
+                                <label for="cloud-link" class="block text-sm font-medium mb-2">
+                                    Or provide cloud storage link (Google Drive, Dropbox, etc.)
+                                </label>
+                                <input id="cloud-link" name="cloud-link" type="url" placeholder="https://drive.google.com/... or https://dropbox.com/..." class="w-full px-3 py-2 border border-input bg-background rounded-md focus:outline-none focus:ring-2 focus:ring-ring">
+                            </div>
+
+                            <div>
+                                <label for="domain" class="block text-sm font-medium mb-2">
+                                    Your domain (or leave blank for free subdomain)
+                                </label>
+                                <input id="domain" name="domain" placeholder="example.com" class="w-full px-3 py-2 border border-input bg-background rounded-md focus:outline-none focus:ring-2 focus:ring-ring">
+                            </div>
+
+                            <div>
+                                <label for="txhash" class="block text-sm font-medium mb-2">
+                                    Transaction hash (from Step 1) *
+                                </label>
+                                <input id="txhash" name="txhash" placeholder="0x..." required class="w-full px-3 py-2 border border-input bg-background rounded-md focus:outline-none focus:ring-2 focus:ring-ring">
+                            </div>
+
+                            <div>
+                                <label for="contact" class="block text-sm font-medium mb-2">
+                                    Your contact (email or Telegram) *
+                                </label>
+                                <input id="contact" name="contact" placeholder="your@email.com or @telegram" required class="w-full px-3 py-2 border border-input bg-background rounded-md focus:outline-none focus:ring-2 focus:ring-ring">
+                            </div>
+
+                            <div>
+                                <label for="extra-info" class="block text-sm font-medium mb-2">
+                                    Extra info (optional)
+                                </label>
+                                <input id="extra-info" name="extra-info" placeholder="Any additional information or requirements" class="w-full px-3 py-2 border border-input bg-background rounded-md focus:outline-none focus:ring-2 focus:ring-ring">
+                            </div>
+
+                            <button type="submit" class="w-full bg-gradient-to-r from-neon-blue to-neon-green text-background font-bold py-3 px-6 rounded-md">
+                                Submit Files
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="py-8 px-6 bg-card border-t border-neon/20">
+            <div class="max-w-6xl mx-auto text-center">
+                <p class="text-muted-foreground">
+                    Powered by Netlify infrastructure. Managed by <span class="text-neon-blue font-semibold">Cryptyc</span>.
+                </p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
 </html>
