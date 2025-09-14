@@ -1,5 +1,7 @@
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faRocket, faLock, faTools, faClock, faCheckCircle } from "@fortawesome/free-solid-svg-icons"
 
 export const Pricing = () => {
   const scrollToPayment = () => {
@@ -25,23 +27,23 @@ export const Pricing = () => {
               
               <div className="space-y-4 mb-8 text-left">
                 <div className="flex items-center gap-3">
-                  <span className="w-2 h-2 bg-neon-blue rounded-full"></span>
+                  <FontAwesomeIcon icon={faRocket} className="text-neon-blue w-5 h-5" />
                   <span>Unlimited bandwidth</span>
                 </div>
                 <div className="flex items-center gap-3">
-                  <span className="w-2 h-2 bg-neon-blue rounded-full"></span>
+                  <FontAwesomeIcon icon={faLock} className="text-neon-blue w-5 h-5" />
                   <span>Free SSL included</span>
                 </div>
                 <div className="flex items-center gap-3">
-                  <span className="w-2 h-2 bg-neon-blue rounded-full"></span>
+                  <FontAwesomeIcon icon={faTools} className="text-neon-blue w-5 h-5" />
                   <span>Managed deployment</span>
                 </div>
                 <div className="flex items-center gap-3">
-                  <span className="w-2 h-2 bg-neon-blue rounded-full"></span>
+                  <FontAwesomeIcon icon={faClock} className="text-neon-blue w-5 h-5" />
                   <span>24/7 uptime monitoring</span>
                 </div>
                 <div className="flex items-center gap-3">
-                  <span className="w-2 h-2 bg-neon-blue rounded-full"></span>
+                  <FontAwesomeIcon icon={faCheckCircle} className="text-neon-blue w-5 h-5" />
                   <span>Worry-free setup</span>
                 </div>
               </div>
