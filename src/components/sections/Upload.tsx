@@ -106,19 +106,6 @@ export const Upload = () => {
                 />
               </div>
 
-              <div>
-                <Label htmlFor="extra-info" className="text-lg font-semibold">
-                  Extra info (optional)
-                </Label>
-                <Input
-                  id="extra-info"
-                  name="extra-info"
-                  type="text"
-                  placeholder="Any additional details or requirements"
-                  className="mt-2 border-neon-blue/50 focus:border-neon-blue"
-                />
-              </div>
-
               <Button
                 type="submit"
                 variant="neon"

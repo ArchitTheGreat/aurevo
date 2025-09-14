@@ -32,13 +32,7 @@ export const Payment = () => {
               </h3>
               
               <div className="mb-6">
-                <div className="w-48 h-48 mx-auto rounded-lg mb-4 overflow-hidden">
-                  <img 
-                    src="/src/assets/qr-eth.png" 
-                    alt="ETH/USDC Payment QR Code" 
-                    className="w-full h-full object-cover"
-                  />
-                </div>
+                <img src="/lovable-uploads/03d767f5-a9bf-4d53-b0b3-a863721e8ea7.png" alt="ETH/USDC Payment QR Code" className="w-48 h-48 mx-auto rounded-lg mb-4 object-contain" />
                 <div className="bg-secondary p-3 rounded-lg font-mono text-sm break-all">
                   {ethAddress}
                 </div>
