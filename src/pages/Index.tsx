@@ -1,283 +1,307 @@
-// Index.tsx
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { ArrowRight, Check, Code, Globe, Shield, Zap, ExternalLink } from "lucide-react";
+import { useEffect } from "react";
 
-import { Button } from "@/components/ui/button"
-import { Card } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { useState } from "react"
 const Index = () => {
-  const [copiedAddress, setCopiedAddress] = useState<string | null>(null)
-  const [submitted, setSubmitted] = useState(false)
+  // Add dark class to enable dark theme
+  useEffect(() => {
+    document.documentElement.classList.add('dark');
+  }, []);
 
-  const scrollToPricing = () => {
-    document.getElementById("pricing")?.scrollIntoView({ behavior: "smooth" })
-  }
-
-  const scrollToPayment = () => {
-    document.getElementById("payment")?.scrollIntoView({ behavior: "smooth" })
-  }
-
-  const copyToClipboard = async (address: string, type: string) => {
-    await navigator.clipboard.writeText(address)
-    setCopiedAddress(type)
-    setTimeout(() => setCopiedAddress(null), 2000)
-  }
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    setSubmitted(true)
-    // Let the form submit naturally to GetForm
-    const form = e.target as HTMLFormElement
-    form.submit()
-  }
+  const scrollToSection = (sectionId: string) => {
+    document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
+  };
 
   return (
-    <div className="min-h-screen bg-background scroll-smooth">
+    <div className="min-h-screen bg-background">
       {/* Hero Section */}
-      <section className="min-h-screen flex items-center justify-center gradient-hero px-6">
-        <div className="text-center max-w-4xl mx-auto animate-fade-in-up">
-          <h1 className="text-6xl md:text-8xl font-black mb-6 leading-tight">
-            <span className="block">Crypto-Only Hosting.</span>
-            <span className="block text-neon-blue">No Banks.</span>
-            <span className="block text-neon-green">No Drama.</span>
-          </h1>
-
-          <p className="text-xl md:text-2xl mb-12 text-muted-foreground max-w-2xl mx-auto">
-            Deploy your site, pay with{" "}
-            <span className="text-neon-blue font-semibold">ETH/USDC</span>. Simple.
-          </p>
-
-          <Button
-            onClick={scrollToPricing}
-            className="animate-glow-pulse bg-gradient-to-r from-neon-blue to-neon-green text-background font-bold text-lg px-12 py-4 h-14 rounded-xl shadow-neon hover:shadow-lg hover:scale-105 transition-all duration-300"
-          >
-            Get Started Now
-          </Button>
+      <section className="relative min-h-screen flex items-center justify-center gradient-hero overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-r from-background/20 to-transparent"></div>
+        <div className="container mx-auto px-6 text-center relative z-10">
+          <div className="max-w-4xl mx-auto animate-fade-in-up">
+            <Badge variant="secondary" className="mb-6">
+              Developer-Friendly Hosting
+            </Badge>
+            
+            <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
+              Ship Faster with{" "}
+              <span className="text-primary-light">Cryptyc</span>
+            </h1>
+            
+            <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto">
+              Production-ready hosting with flexible payment options. 
+              Pay with crypto or fiat — we've got you covered.
+            </p>
+            
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <Button 
+                variant="hero" 
+                size="xl"
+                onClick={() => scrollToSection('pricing')}
+                className="group"
+              >
+                Get Started Now
+                <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+              </Button>
+              
+              <Button 
+                variant="professional" 
+                size="xl"
+                onClick={() => scrollToSection('features')}
+              >
+                View Features
+              </Button>
+            </div>
+          </div>
+        </div>
+        
+        {/* Scroll indicator */}
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+          <div className="w-6 h-10 border-2 border-primary rounded-full flex justify-center">
+            <div className="w-1 h-3 bg-primary rounded-full mt-2 animate-pulse"></div>
+          </div>
         </div>
       </section>
 
-      {/* Pricing Section */}
-      <section id="pricing" className="py-20 px-6 bg-background">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl md:text-6xl font-bold mb-16 text-neon-blue">
-            Simple Pricing
-          </h2>
-
-          <Card className="max-w-md mx-auto gradient-card border-neon shadow-card p-8">
-            <h3 className="text-2xl font-bold mb-4">Hosting Plan</h3>
-            <div className="mb-8">
-              <span className="text-4xl font-black text-neon-blue">0.0093 ETH</span>
-              <span className="text-muted-foreground ml-2">/ month</span>
-            </div>
-
-            <div className="space-y-4 mb-8 text-left">
-              <div className="flex items-center gap-3">
-                <span className="w-2 h-2 bg-neon-blue rounded-full"></span>
-                <span>Unlimited bandwidth</span>
-              </div>
-              <div className="flex items-center gap-3">
-                <span className="w-2 h-2 bg-neon-blue rounded-full"></span>
-                <span>Free SSL included</span>
-              </div>
-              <div className="flex items-center gap-3">
-                <span className="w-2 h-2 bg-neon-blue rounded-full"></span>
-                <span>Managed deployment</span>
-              </div>
-              <div className="flex items-center gap-3">
-                <span className="w-2 h-2 bg-neon-blue rounded-full"></span>
-                <span>24/7 uptime monitoring</span>
-              </div>
-              <div className="flex items-center gap-3">
-                <span className="w-2 h-2 bg-neon-blue rounded-full"></span>
-                <span>Worry-free setup</span>
-              </div>
-            </div>
-
-            <Button
-              onClick={scrollToPayment}
-              className="w-full bg-gradient-to-r from-neon-blue to-neon-green text-background font-bold"
-            >
-              Pay & Upload Your Site →
-            </Button>
-          </Card>
-        </div>
-      </section>
-
-      {/* Payment Section */}
-      <section id="payment" className="py-20 px-6 bg-card">
-        <div className="max-w-6xl mx-auto text-center">
-          <h2 className="text-4xl md:text-6xl font-bold mb-8 text-neon-green">
-            Step 1: Send Payment
-          </h2>
-          <p className="text-xl mb-16 text-muted-foreground">
-            Send crypto to the address below. Save your transaction hash.
-          </p>
-
-          <div className="max-w-md mx-auto">
-            <Card className="gradient-card border-neon-blue/50 p-8 hover:shadow-neon transition-all duration-300">
-              <div className="text-center">
-                <h3 className="text-2xl font-bold mb-4 text-neon-blue">ETH / USDC</h3>
-                <div className="mb-6">
-                  <img
-                    src="/lovable-uploads/03d767f5-a9bf-4d53-b0b3-a863721e8ea7.png"
-                    alt="ETH/USDC Payment QR Code"
-                    className="w-48 h-48 mx-auto rounded-lg mb-4 object-contain"
-                  />
-                  <div className="bg-secondary p-3 rounded-lg font-mono text-sm break-all">
-                    0x6aC5e3016382208E57A8224F4288414d0b30a276
-                  </div>
+      {/* Features Section */}
+      <section id="features" className="py-24 px-6">
+        <div className="container mx-auto">
+          <div className="text-center mb-16 animate-fade-in-up">
+            <h2 className="text-3xl md:text-5xl font-bold mb-6">
+              Built for Modern Developers
+            </h2>
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+              Everything you need to deploy, scale, and manage your applications with confidence.
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            <Card className="gradient-card shadow-card hover:shadow-accent transition-all duration-300 animate-slide-in-from-bottom">
+              <CardContent className="p-8 text-center">
+                <div className="w-16 h-16 gradient-accent rounded-lg flex items-center justify-center mx-auto mb-6">
+                  <Zap className="h-8 w-8 text-white" />
                 </div>
-                <Button
-                  variant="neonOutline"
-                  onClick={() =>
-                    copyToClipboard(
-                      "0x6aC5e3016382208E57A8224F4288414d0b30a276",
-                      "eth"
-                    )
-                  }
-                  className="w-full"
-                >
-                  {copiedAddress === "eth" ? "Copied!" : "Copy Address"}
-                </Button>
-              </div>
+                <h3 className="text-xl font-semibold mb-4">Lightning Fast</h3>
+                <p className="text-muted-foreground">
+                  Global CDN with edge locations worldwide. Your apps load instantly, everywhere.
+                </p>
+              </CardContent>
+            </Card>
+            
+            <Card className="gradient-card shadow-card hover:shadow-accent transition-all duration-300 animate-slide-in-from-bottom" style={{ animationDelay: '0.1s' }}>
+              <CardContent className="p-8 text-center">
+                <div className="w-16 h-16 gradient-accent rounded-lg flex items-center justify-center mx-auto mb-6">
+                  <Code className="h-8 w-8 text-white" />
+                </div>
+                <h3 className="text-xl font-semibold mb-4">Developer First</h3>
+                <p className="text-muted-foreground">
+                  Git integration, automatic deployments, and powerful CLI tools built for your workflow.
+                </p>
+              </CardContent>
+            </Card>
+            
+            <Card className="gradient-card shadow-card hover:shadow-accent transition-all duration-300 animate-slide-in-from-bottom" style={{ animationDelay: '0.2s' }}>
+              <CardContent className="p-8 text-center">
+                <div className="w-16 h-16 gradient-accent rounded-lg flex items-center justify-center mx-auto mb-6">
+                  <Shield className="h-8 w-8 text-white" />
+                </div>
+                <h3 className="text-xl font-semibold mb-4">Enterprise Security</h3>
+                <p className="text-muted-foreground">
+                  SSL certificates, DDoS protection, and compliance-ready infrastructure by default.
+                </p>
+              </CardContent>
             </Card>
           </div>
         </div>
       </section>
 
-      {/* Upload Section */}
-      <section className="py-20 px-6 bg-background">
-        <div className="max-w-2xl mx-auto">
-          {submitted ? (
-            <div className="text-center">
-              <h2 className="text-4xl md:text-6xl font-bold mb-8 text-neon-green">
-                Thank You!
-              </h2>
-              <p className="text-xl text-muted-foreground">
-                We'll verify your payment and deploy your site. Expect your live
-                link within 24 hours.
-              </p>
-            </div>
-          ) : (
-            <>
-              <div className="text-center mb-16">
-                <h2 className="text-4xl md:text-6xl font-bold mb-8 text-neon-blue">
-                  Step 2: Upload Your Files
-                </h2>
-                <p className="text-xl text-muted-foreground">
-                  Upload your site files and details so we can deploy it.
-                </p>
-              </div>
-
-              <Card className="gradient-card p-8">
-                <form
-                  action="https://getform.io/f/ayveqvlb"
-                  method="POST"
-                  encType="multipart/form-data"
-                  onSubmit={handleSubmit}
-                  className="space-y-6"
+      {/* Pricing Section */}
+      <section id="pricing" className="py-24 px-6 bg-muted/30">
+        <div className="container mx-auto text-center">
+          <div className="mb-16 animate-fade-in-up">
+            <h2 className="text-3xl md:text-5xl font-bold mb-6">
+              Simple, Transparent Pricing
+            </h2>
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+              Start building today with our developer-friendly hosting plan.
+            </p>
+          </div>
+          
+          <div className="max-w-md mx-auto">
+            <Card className="gradient-card shadow-accent border-primary/20 relative overflow-hidden animate-fade-in">
+              <div className="absolute top-0 left-0 right-0 h-1 gradient-accent"></div>
+              <CardContent className="p-8">
+                <div className="text-center mb-8">
+                  <h3 className="text-2xl font-bold mb-2">Developer Plan</h3>
+                  <p className="text-muted-foreground mb-6">
+                    Everything you need to ship production-ready apps
+                  </p>
+                  <div className="mb-6">
+                    <span className="text-4xl font-bold">$29</span>
+                    <span className="text-muted-foreground">/month</span>
+                  </div>
+                </div>
+                
+                <div className="space-y-4 mb-8 text-left">
+                  <div className="flex items-center gap-3">
+                    <Check className="h-5 w-5 text-accent flex-shrink-0" />
+                    <span>Unlimited projects</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <Check className="h-5 w-5 text-accent flex-shrink-0" />
+                    <span>100GB bandwidth</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <Check className="h-5 w-5 text-accent flex-shrink-0" />
+                    <span>Custom domains</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <Check className="h-5 w-5 text-accent flex-shrink-0" />
+                    <span>SSL certificates</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <Check className="h-5 w-5 text-accent flex-shrink-0" />
+                    <span>24/7 support</span>
+                  </div>
+                </div>
+                
+                <Button 
+                  variant="gradient" 
+                  size="lg" 
+                  className="w-full"
+                  onClick={() => scrollToSection('payment')}
                 >
-                  <input type="hidden" name="_gotcha" style={{display: 'none'}} />
-                  
-                  <div>
-                    <Label htmlFor="files">
-                      Upload your site files (ZIP, 7ZIP, RAR - max 5MB)
-                    </Label>
-                    <Input
-                      id="files"
-                      name="file"
-                      type="file"
-                      accept=".zip,.7z,.rar,.tar,.gz"
-                      required
-                      className="mt-2"
-                    />
-                  </div>
+                  Choose Plan
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
 
-                  <div>
-                    <Label htmlFor="cloud-link">
-                      Or provide cloud storage link (Google Drive, Dropbox, etc.)
-                    </Label>
-                    <Input
-                      id="cloud-link"
-                      name="cloud-link"
-                      type="url"
-                      placeholder="https://drive.google.com/... or https://dropbox.com/..."
-                      className="mt-2"
-                    />
-                  </div>
+      {/* Payment Options Section */}
+      <section id="payment" className="py-24 px-6">
+        <div className="container mx-auto text-center">
+          <div className="mb-16 animate-fade-in-up">
+            <h2 className="text-3xl md:text-5xl font-bold mb-6">
+              Flexible Payment Options
+            </h2>
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+              Choose how you want to pay. We support both traditional and modern payment methods.
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            <Card className="gradient-card shadow-card hover:shadow-accent transition-all duration-300 animate-slide-in-from-bottom">
+              <CardContent className="p-8">
+                <div className="w-16 h-16 bg-primary rounded-lg flex items-center justify-center mx-auto mb-6">
+                  <Globe className="h-8 w-8 text-primary-foreground" />
+                </div>
+                <h3 className="text-2xl font-semibold mb-4">Traditional Payments</h3>
+                <p className="text-muted-foreground mb-6">
+                  Pay with credit cards, bank transfers, and other conventional payment methods through our secure payment gateway.
+                </p>
+                <div className="flex flex-wrap gap-2 justify-center">
+                  <Badge variant="secondary">Credit Cards</Badge>
+                  <Badge variant="secondary">Bank Transfer</Badge>
+                  <Badge variant="secondary">PayPal</Badge>
+                </div>
+              </CardContent>
+            </Card>
+            
+            <Card className="gradient-card shadow-card hover:shadow-accent transition-all duration-300 animate-slide-in-from-bottom" style={{ animationDelay: '0.1s' }}>
+              <CardContent className="p-8">
+                <div className="w-16 h-16 bg-accent rounded-lg flex items-center justify-center mx-auto mb-6">
+                  <Zap className="h-8 w-8 text-accent-foreground" />
+                </div>
+                <h3 className="text-2xl font-semibold mb-4">Cryptocurrency</h3>
+                <p className="text-muted-foreground mb-6">
+                  Pay with Bitcoin, Ethereum, USDC, and other major cryptocurrencies. Fast, secure, and decentralized payments.
+                </p>
+                <div className="flex flex-wrap gap-2 justify-center">
+                  <Badge variant="secondary">Bitcoin</Badge>
+                  <Badge variant="secondary">Ethereum</Badge>
+                  <Badge variant="secondary">USDC</Badge>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
 
-                  <div>
-                    <Label htmlFor="domain">
-                      Your domain (or leave blank for free subdomain)
-                    </Label>
-                    <Input
-                      id="domain"
-                      name="domain"
-                      placeholder="example.com"
-                      className="mt-2"
-                    />
-                  </div>
-
-                  <div>
-                    <Label htmlFor="txhash">Transaction hash (from Step 1) *</Label>
-                    <Input
-                      id="txhash"
-                      name="txhash"
-                      placeholder="0x..."
-                      required
-                      className="mt-2"
-                    />
-                  </div>
-
-                  <div>
-                    <Label htmlFor="contact">
-                      Your contact (email or Telegram) *
-                    </Label>
-                    <Input
-                      id="contact"
-                      name="contact"
-                      placeholder="your@email.com or @telegram"
-                      required
-                      className="mt-2"
-                    />
-                  </div>
-
-                  <div>
-                    <Label htmlFor="extra-info">
-                      Extra info (optional)
-                    </Label>
-                    <Input
-                      id="extra-info"
-                      name="extra-info"
-                      placeholder="Any additional information or requirements"
-                      className="mt-2"
-                    />
-                  </div>
-
-                  <Button
-                    type="submit"
-                    className="w-full bg-gradient-to-r from-neon-blue to-neon-green text-background font-bold"
-                  >
-                    Submit Files
-                  </Button>
-                </form>
-              </Card>
-            </>
-          )}
+      {/* Upload/Contact Section */}
+      <section id="upload" className="py-24 px-6 bg-muted/30">
+        <div className="container mx-auto text-center">
+          <div className="mb-16 animate-fade-in-up">
+            <h2 className="text-3xl md:text-5xl font-bold mb-6">
+              Ready to Deploy?
+            </h2>
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+              Upload your project files and get your application live in minutes.
+            </p>
+          </div>
+          
+          <Card className="max-w-2xl mx-auto gradient-card shadow-accent animate-fade-in">
+            <CardContent className="p-12">
+              <div className="w-20 h-20 gradient-accent rounded-full flex items-center justify-center mx-auto mb-8">
+                <Code className="h-10 w-10 text-white" />
+              </div>
+              
+              <h3 className="text-2xl font-semibold mb-4">Upload Your Project</h3>
+              <p className="text-muted-foreground mb-8">
+                Have your project ready? Upload your files and provide deployment details through our secure upload portal.
+              </p>
+              
+              <Button 
+                variant="gradient" 
+                size="xl"
+                className="group"
+                onClick={() => {
+                  // Placeholder for external upload form URL
+                  window.open('YOUR_UPLOAD_FORM_URL_HERE', '_blank');
+                }}
+              >
+                Upload Files
+                <ExternalLink className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+              </Button>
+              
+              <p className="text-sm text-muted-foreground mt-4">
+                Supports ZIP, TAR, and Git repositories
+              </p>
+            </CardContent>
+          </Card>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="py-8 px-6 bg-card border-t border-neon/20">
-        <div className="max-w-6xl mx-auto text-center">
-          <p className="text-muted-foreground">
-            Powered by Netlify infrastructure. Managed by{" "}
-            <span className="text-neon-blue font-semibold">Cryptyc</span>.
-          </p>
+      <footer className="py-12 px-6 border-t border-border bg-card">
+        <div className="container mx-auto">
+          <div className="text-center">
+            <h3 className="text-2xl font-bold mb-4 text-primary">Cryptyc</h3>
+            <p className="text-muted-foreground mb-6 max-w-md mx-auto">
+              Developer-friendly hosting with flexible payment options. 
+              Built for the modern web.
+            </p>
+            
+            <div className="flex justify-center space-x-6 text-sm text-muted-foreground">
+              <a href="#" className="hover:text-primary transition-colors">Privacy Policy</a>
+              <a href="#" className="hover:text-primary transition-colors">Terms of Service</a>
+              <a href="#" className="hover:text-primary transition-colors">Support</a>
+            </div>
+            
+            <div className="mt-8 pt-8 border-t border-border">
+              <p className="text-sm text-muted-foreground">
+                © 2024 Cryptyc. All rights reserved.
+              </p>
+            </div>
+          </div>
         </div>
       </footer>
     </div>
-  )
-}
+  );
+};
 
-export default Index
+export default Index;
