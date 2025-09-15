@@ -26,13 +26,12 @@ const Index = () => {
             </Badge>
             
             <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
-              Ship Faster with{" "}
-              <span className="text-primary-light">AUREVO</span>
+              <span className="text-primary">AUREVO</span>{" "}
+              <span className="text-foreground">— Hosting Evolved</span>
             </h1>
             
             <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto">
-              Production-ready hosting with flexible payment options. 
-              Pay with crypto or fiat — we've got you covered.
+              Beyond banks. Beyond limits. The next evolution of deployment with flexible payment options.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">

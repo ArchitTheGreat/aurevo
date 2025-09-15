@@ -54,47 +54,47 @@ All colors MUST be HSL.
   }
 
   .dark {
-    /* Professional SaaS Dark Theme - Dark background with neon accents */
-    --background: 224 71% 4%;
-    --foreground: 0 0% 98%;
+    /* AUREVO Brand Colors - Dark theme with electric blue, neon green, gold accents */
+    --background: 222 47% 11%;
+    --foreground: 213 31% 91%;
 
-    --card: 215 28% 8%;
-    --card-foreground: 0 0% 98%;
+    --card: 224 71% 4%;
+    --card-foreground: 213 31% 91%;
 
-    --popover: 215 28% 8%;
-    --popover-foreground: 0 0% 98%;
+    --popover: 224 71% 4%;
+    --popover-foreground: 215 20% 65%;
 
-    --primary: 221 83% 53%;
-    --primary-foreground: 0 0% 100%;
+    --primary: 217 91% 60%;
+    --primary-foreground: 222 47% 11%;
 
-    --secondary: 215 28% 17%;
-    --secondary-foreground: 0 0% 98%;
+    --secondary: 187 85% 53%;
+    --secondary-foreground: 222 47% 11%;
 
-    --muted: 215 28% 12%;
-    --muted-foreground: 217 11% 65%;
+    --muted: 223 47% 11%;
+    --muted-foreground: 215 16% 57%;
 
-    --accent: 142 71% 45%;
-    --accent-foreground: 0 0% 100%;
+    --accent: 43 96% 56%;
+    --accent-foreground: 222 47% 11%;
 
     --destructive: 0 63% 31%;
-    --destructive-foreground: 0 0% 98%;
+    --destructive-foreground: 210 40% 98%;
 
-    --border: 215 28% 17%;
-    --input: 215 28% 17%;
-    --ring: 221 83% 53%;
+    --border: 216 34% 17%;
+    --input: 216 34% 17%;
+    --ring: 217 91% 60%;
 
-    /* Dark theme gradients */
-    --gradient-hero: linear-gradient(135deg, hsl(224 71% 4%) 0%, hsl(215 28% 8%) 100%);
-    --gradient-card: linear-gradient(145deg, hsl(215 28% 8%) 0%, hsl(215 28% 12%) 100%);
-    --gradient-accent: linear-gradient(135deg, hsl(221 83% 53%) 0%, hsl(142 71% 45%) 100%);
+    /* AUREVO brand gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(222 47% 11%) 0%, hsl(222 47% 8%) 50%, hsl(222 47% 11%) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(224 71% 4%) 0%, hsl(224 71% 6%) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(217 91% 60%) 0%, hsl(187 85% 53%) 100%);
     
-    /* Dark theme shadows with neon glow */
+    /* AUREVO neon glow shadows */
     --shadow-card: 0 4px 6px -1px rgb(0 0 0 / 0.2), 0 2px 4px -2px rgb(0 0 0 / 0.2);
-    --shadow-accent: 0 0 20px hsl(var(--primary) / 0.3), 0 0 40px hsl(var(--accent) / 0.2);
+    --shadow-accent: 0 0 20px hsl(217 91% 60% / 0.3), 0 0 40px hsl(187 85% 53% / 0.2);
     
-    /* Neon accent colors for dark theme */
-    --primary-light: 221 83% 60%;
-    --accent-light: 142 71% 50%;
+    /* AUREVO accent variations */
+    --primary-light: 220 91% 70%;
+    --accent-light: 51 95% 63%;
   }
 }
 
