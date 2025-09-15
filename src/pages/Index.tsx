@@ -27,7 +27,7 @@ const Index = () => {
             
             <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
               Ship Faster with{" "}
-              <span className="text-primary-light">Cryptyc</span>
+              <span className="text-primary-light">AUREVO</span>
             </h1>
             
             <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto">
@@ -280,7 +280,7 @@ const Index = () => {
       <footer className="py-12 px-6 border-t border-border bg-card">
         <div className="container mx-auto">
           <div className="text-center">
-            <h3 className="text-2xl font-bold mb-4 text-primary">Cryptyc</h3>
+            <h3 className="text-2xl font-bold mb-4 text-primary">AUREVO</h3>
             <p className="text-muted-foreground mb-6 max-w-md mx-auto">
               Developer-friendly hosting with flexible payment options. 
               Built for the modern web.
@@ -294,7 +294,7 @@ const Index = () => {
             
             <div className="mt-8 pt-8 border-t border-border">
               <p className="text-sm text-muted-foreground">
-                © 2024 Cryptyc. All rights reserved.
+                © 2024 AUREVO. All rights reserved.
               </p>
             </div>
           </div>
