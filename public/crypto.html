@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submission Service</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts - Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-image: url('https://images.pexels.com/photos/29465872/pexels-photo-29465872.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            min-height: 100vh;
+        }
+
+        /* Custom scrollbar for better visual integration */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center p-4">
+
+    <!-- Main Card Container -->
+    <div id="form-container" class="relative w-full max-w-lg p-8 transition-all duration-300 transform rounded-3xl shadow-lg backdrop-blur-xl bg-white/10 border border-white/20 md:p-12 lg:max-w-xl hover:scale-105">
+
+        <!-- Form Section -->
+        <div id="submission-form" class="transition-opacity duration-500 opacity-100">
+            <h1 class="text-3xl font-bold text-white mb-6 text-center">Submit a File</h1>
+            <p class="text-sm text-gray-200 mb-8 text-center">Please fill out the form below to submit your files and information.</p>
+
+            <form id="file-form" class="space-y-6">
+                <!-- File Upload -->
+                <div>
+                    <label for="file-upload" class="block text-gray-200 text-sm font-semibold mb-2">File Upload (ZIP, 7z, RAR, max 5MB)</label>
+                    <div class="flex items-center justify-center w-full">
+                        <label for="file-upload" class="flex flex-col items-center justify-center w-full h-32 transition-colors duration-200 border-2 border-dashed rounded-xl cursor-pointer border-white/30 hover:border-white/50 bg-white/5">
+                            <svg class="w-10 h-10 text-gray-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-4-4v0a4 4 0 014-4h4l1.5-3A2 2 0 0115.5 5h1a2 2 0 012 2v2M15 12a3 3 0 01-3 3h-2M15 12h-2M15 12a3 3 0 01-3 3v2a3 3 0 01-3 3h-2a3 3 0 01-3-3v-2a3 3 0 01-3-3v0"></path></svg>
+                            <p class="mt-2 text-sm text-gray-200"><span class="font-semibold">Click to upload</span> or drag and drop</p>
+                            <p id="file-name" class="text-xs text-gray-400 mt-1"></p>
+                            <input id="file-upload" name="file-upload" type="file" class="hidden" accept=".zip,.7z,.rar" />
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Cloud Link -->
+                <div>
+                    <label for="cloud-link" class="block text-gray-200 text-sm font-semibold mb-2">Cloud Link</label>
+                    <input type="url" id="cloud-link" name="cloud-link" placeholder="e.g. https://drive.google.com/..." class="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-gray-300 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-white/50" />
+                </div>
+
+                <!-- Domain -->
+                <div>
+                    <label for="domain" class="block text-gray-200 text-sm font-semibold mb-2">Domain (Optional)</label>
+                    <input type="text" id="domain" name="domain" placeholder="e.g. example.com" class="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-gray-300 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-white/50" />
+                </div>
+
+                <!-- Transaction Hash (Required) -->
+                <div>
+                    <label for="transaction-hash" class="block text-gray-200 text-sm font-semibold mb-2">Transaction Hash (Required)</label>
+                    <input type="text" id="transaction-hash" name="transaction-hash" required placeholder="Enter the transaction hash" class="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-gray-300 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-white/50" />
+                </div>
+
+                <!-- Contact Email (Required) -->
+                <div>
+                    <label for="contact-email" class="block text-gray-200 text-sm font-semibold mb-2">Contact Email (Required)</label>
+                    <input type="email" id="contact-email" name="contact-email" required placeholder="you@example.com" class="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-gray-300 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-white/50" />
+                </div>
+
+                <!-- Extra Notes (Optional) -->
+                <div>
+                    <label for="extra-notes" class="block text-gray-200 text-sm font-semibold mb-2">Extra Notes (Optional)</label>
+                    <textarea id="extra-notes" name="extra-notes" rows="4" placeholder="Any additional information..." class="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-gray-300 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-white/50"></textarea>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="pt-4">
+                    <button type="submit" class="w-full py-4 rounded-full font-bold text-white transition-all duration-300 bg-red-800 hover:bg-red-900 focus:outline-none focus:ring-4 focus:ring-red-500">
+                        Submit
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Thank You Screen (Hidden by default) -->
+        <div id="thank-you-screen" class="absolute inset-0 flex flex-col items-center justify-center p-8 transition-opacity duration-500 opacity-0 hidden">
+            <svg class="w-24 h-24 text-green-400 mb-6 animate-pulse" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+            </svg>
+            <h2 class="text-3xl font-bold text-white text-center mb-2">Thanks!</h2>
+            <p class="text-gray-200 text-center">Your submission has been received.</p>
+        </div>
+    </div>
+
+    <script>
+        const fileForm = document.getElementById('file-form');
+        const submissionForm = document.getElementById('submission-form');
+        const thankYouScreen = document.getElementById('thank-you-screen');
+        const fileInput = document.getElementById('file-upload');
+        const fileNameDisplay = document.getElementById('file-name');
+
+        // Update file name display on file selection
+        fileInput.addEventListener('change', (e) => {
+            if (e.target.files.length > 0) {
+                fileNameDisplay.textContent = e.target.files[0].name;
+                fileNameDisplay.classList.add('text-green-300');
+            } else {
+                fileNameDisplay.textContent = '';
+                fileNameDisplay.classList.remove('text-green-300');
+            }
+        });
+
+        fileForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            // FOR A REAL APPLICATION:
+            // 1. Get form data
+            const formData = new FormData(fileForm);
+            const data = Object.fromEntries(formData.entries());
+
+            // 2. Configure your endpoint URL here
+            // const API_URL = 'YOUR_API_ENDPOINT_HERE';
+
+            // 3. Use the fetch API to send the data
+            /*
+            fetch(API_URL, {
+                method: 'POST',
+                body: JSON.stringify(data),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response => response.json())
+            .then(result => {
+                // Handle success
+                console.log('Success:', result);
+                submissionForm.classList.add('opacity-0', 'pointer-events-none');
+                setTimeout(() => {
+                    submissionForm.classList.add('hidden');
+                    thankYouScreen.classList.remove('hidden', 'opacity-0');
+                    thankYouScreen.classList.add('opacity-100');
+                }, 500); // Wait for fade-out to complete
+            })
+            .catch(error => {
+                // Handle errors
+                console.error('Error:', error);
+                alert('Submission failed. Please try again.');
+                submissionForm.classList.add('opacity-0', 'pointer-events-none');
+            });
+            */
+
+            // SIMULATED SUBMISSION for demonstration
+            submissionForm.classList.add('opacity-0', 'pointer-events-none');
+            setTimeout(() => {
+                submissionForm.classList.add('hidden');
+                thankYouScreen.classList.remove('hidden', 'opacity-0');
+                thankYouScreen.classList.add('opacity-100');
+            }, 500);
+        });
+    </script>
+</body>
+</html>
