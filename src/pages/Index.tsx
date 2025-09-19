@@ -3,6 +3,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { ArrowRight, Check, Code, Globe, Shield, Zap, ExternalLink } from "lucide-react";
 import { useEffect } from "react";
+import Layout from "@/components/Layout";
 
 const Index = () => {
   // Add dark class to enable dark theme
@@ -15,7 +16,7 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background">
+    <Layout>
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center gradient-hero overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-background/20 to-transparent"></div>
@@ -291,16 +292,16 @@ const Index = () => {
               <a href="#" className="hover:text-primary transition-colors">Support</a>
             </div>
             
-            <div className="mt-8 pt-8 border-t border-border">
-              <p className="text-sm text-muted-foreground">
-                © 2024 AUREVO. All rights reserved.
-              </p>
-            </div>
-          </div>
-        </div>
-      </footer>
-    </div>
-  );
-};
+             <div className="mt-8 pt-8 border-t border-border">
+               <p className="text-sm text-muted-foreground">
+                 © 2024 AUREVO. All rights reserved.
+               </p>
+             </div>
+           </div>
+         </div>
+       </footer>
+     </Layout>
+   );
+ };
 
 export default Index;
