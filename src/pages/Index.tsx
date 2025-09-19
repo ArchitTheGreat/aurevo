@@ -4,7 +4,7 @@ import { Badge } from "@/components/ui/badge";
 import { ArrowRight, Code, Globe, Shield, Zap, ExternalLink } from "lucide-react";
 import { useEffect } from "react";
 import Layout from "@/components/Layout";
-import Link from "next/link";
+// Fixed: Use a regular <a> instead of next/link for Vite compatibility
 
 const Index = () => {
   // Add dark class to enable dark theme
@@ -132,7 +132,8 @@ const Index = () => {
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
               No hidden fees. No surprises. Just straightforward pricing that scales with you.
             </p>
-            <Link
+            {/* Use regular <a> instead of Link */}
+            <a
               href="/pricing"
               target="_blank"
               rel="noopener noreferrer"
@@ -140,7 +141,7 @@ const Index = () => {
             >
               View Detailed Pricing
               <ExternalLink className="ml-1 h-4 w-4" />
-            </Link>
+            </a>
           </div>
 
           <Button variant="hero" size="sm">
