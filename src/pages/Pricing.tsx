@@ -127,7 +127,7 @@ const Pricing = () => {
               </Badge>
             </div>
             <h1 className="text-5xl md:text-7xl font-bold mb-6">
-              <span className="gradient-hero bg-clip-text text-transparent">
+              <span className="gradient-hero bg-clip-text text-white">
                 Choose Your
               </span>
               <br />
